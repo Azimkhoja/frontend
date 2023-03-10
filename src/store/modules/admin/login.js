@@ -6,12 +6,13 @@ export const login = {
         logMessage: "",
         token:"",
         username: "",
-        role:null,
+        role:null,  
     }),
 
         mutations:{
             SetAuth(state, bool) {
                 state.isLogged = bool;
+                window.localStorage.setItem('auth', state.isLogged)
             },
             SetMessage(state, message) {
                 state.logMessage = message;
@@ -41,12 +42,17 @@ export const login = {
                     commit('SetAuth', true)
                     commit('SetToken', response.data.access_token)
                     commit('SetMessage', "")
-                    commit('SetUsername', response.data.username)
+                    if(response.data.username !== undefined){
+                        commit('SetUsername', response.data.username)
+                    }
+
                     commit('SetRole', response.data.role)
+
+                    return response
     
                 } catch (err) {
                     console.log(err)
-                    commit('SetMessage', err.response)
+                    commit('SetMessage', err.response.data.message)
                     commit('SetToken', "")
                     commit('SetAuth', false)
                     commit('SetUsername', "")
