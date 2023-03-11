@@ -3,6 +3,7 @@ import {login} from "./modules/admin/login"
 import {signup} from "./modules/admin/signup"
 import {createAdmin} from "./modules/admin/create"
 import { CreateCategory } from './modules/category/addCategory'
+import { GetCategory } from './modules/category/getCategory'
 import { addPost } from './modules/post/addPost'
 
 
@@ -12,7 +13,8 @@ export const store = createStore({
         signup,
         createAdmin,
         CreateCategory,
-        addPost
+        addPost,
+        GetCategory
 
     }
 })

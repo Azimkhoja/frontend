@@ -15,6 +15,13 @@
             >List</router-link
           >
         </li>
+        <li>
+          <router-link
+            class="mx-3 block bg-primary-700 text-white py-2 px-6 rounded-xl"
+            to="/post/list"
+            >Category</router-link
+          >
+        </li>
       </ul>
       <div>
         <router-view></router-view>
